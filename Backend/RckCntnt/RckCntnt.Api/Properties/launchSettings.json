@@ -16,7 +16,11 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "MONGODB_CONNECTION_STRING": "mongodb+srv://guest:guest@wesleycluster.juwro.mongodb.net/Rck?retryWrites=true&w=majority",
-        "MONGODB_DATABASE_NAME": "Rck"
+        "MONGODB_DATABASE_NAME": "Rck",
+        "RABBITMQ_QUEUE_NAME": "likes_queue",
+        "RABBITMQ_USERNAME": "guest",
+        "RABBITMQ_PASSWORD": "guest",
+        "RABBITMQ_HOST": "localhost"
       }
     },
     "RckCntnt.Api": {

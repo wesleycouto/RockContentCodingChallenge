@@ -12,15 +12,15 @@ namespace RckCntnt.BootStrappers
         {
             #region Services
 
-            services.AddScoped<IArticleLikeService, ArticleLikeService>();
+            services.AddSingleton<IArticleLikeService, ArticleLikeService>();
 
             #endregion Services
 
-            #region Services
+            #region Repository
 
-            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddSingleton<IArticleRepository, ArticleRepository>();
 
-            #endregion Services
+            #endregion Repository
         }
     }
 }

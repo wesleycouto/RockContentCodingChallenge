@@ -50,9 +50,6 @@ namespace RckCntnt.Infra.Repository
 
                 _article = _mapper.Map<Article>(article);
                 ReplaceOneResult result = collection.ReplaceOne(filter, _article);
-
-                article.LikesQty = 1;
-                Insert(article);
             }
             catch (Exception ex)
             {

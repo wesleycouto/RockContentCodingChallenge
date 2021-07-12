@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using RckCntnt.Api.Consumers;
 using RckCntnt.Application.AutoMapper;
 using RckCntnt.BootStrappers;
+using System;
 
 namespace RckCntnt.Api
 {
@@ -27,14 +28,24 @@ namespace RckCntnt.Api
             services.AddMassTransit(busConfig =>
             {
                 busConfig.AddConsumer<LikeConsumer>();
+
                 busConfig.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.ReceiveEndpoint("likes_queue", endpointConfig => endpointConfig.ConfigureConsumer<LikeConsumer>(context));
+                    var rabbitMqQueueName = Environment.GetEnvironmentVariable("RABBITMQ_QUEUE_NAME");
+                    var rabbitMqUsername = Environment.GetEnvironmentVariable("RABBITMQ_USERNAME");
+                    var rabbitMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD");
+                    var rabbitMqHost = Environment.GetEnvironmentVariable("RABBITMQ_HOST");
 
-                    cfg.Host("localhost", "/", host =>
+                    cfg.ReceiveEndpoint(rabbitMqQueueName, endpointConfig =>
                     {
-                        host.Username("guest");
-                        host.Password("guest");
+                        endpointConfig.ConfigureConsumer<LikeConsumer>(context);
+                        endpointConfig.ConcurrentMessageLimit = 1;
+                    });
+
+                    cfg.Host(rabbitMqHost, "/", host =>
+                    {
+                        host.Username(rabbitMqUsername);
+                        host.Password(rabbitMqPassword);
                     });
                 });
             });

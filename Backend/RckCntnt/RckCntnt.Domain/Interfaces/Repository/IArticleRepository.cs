@@ -4,7 +4,7 @@ namespace RckCntnt.Domain.Interfaces.Repository
 {
     public interface IArticleRepository
     {
-        void Insert(Article order);
+        void Insert(Article article);
 
         void Update(Article article);
 
