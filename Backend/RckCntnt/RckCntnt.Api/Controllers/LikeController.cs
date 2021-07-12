@@ -25,7 +25,6 @@ namespace RckCntnt.Api.Controllers
         {
             _logger = logger;
             _bus = bus;
-
             _articleLikeService = articleLikeService;
         }
 
@@ -50,9 +49,17 @@ namespace RckCntnt.Api.Controllers
         [HttpGet("{articleId}")]
         public async Task<IActionResult> Get([FromRoute] int articleId)
         {
-            var likesCount = await _articleLikeService.GetArticleLikes(articleId);
+            try
+            {
+                var likesCount = await _articleLikeService.GetArticleLikes(articleId);
 
-            return Ok(new { likesCount });
+                return Ok(new { likesCount });
+            }
+            catch (System.Exception)
+            {
+                _logger.LogError($"Error trying to get ArticleLikes: {articleId}");
+                return StatusCode(500);
+            }
         }
     }
 }

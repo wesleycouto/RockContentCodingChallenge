@@ -57,7 +57,18 @@ namespace RckCntnt.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RckCntnt Api", Version = "v1", Description = "RockContent Challenge Api" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "RckCntnt Api",
+                    Version = "v1",
+                    Description = "RockContent Challenge Api",
+                    Contact = new OpenApiContact
+                    {
+                        Email = "wesleycouto@gmail.com",
+                        Name = "Wesley Couto da Silva",
+                        Url = new Uri("https://github.com/wesleycouto/RockContentCodingChallenge/")
+                    }
+                });
             });
 
             RegisterServices(services);

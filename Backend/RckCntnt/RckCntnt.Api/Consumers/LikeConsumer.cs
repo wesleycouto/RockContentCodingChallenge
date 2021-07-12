@@ -30,13 +30,13 @@ namespace RckCntnt.Api.Consumers
                 _logger.LogInformation($"Like on Article: {articleLike.ArticleId}");
 
                 _articleLikeService.AddArticleLike(articleLike);
+                return Task.CompletedTask;
             }
             catch (Exception ex)
             {
                 _logger.LogError("Error on LikeConsumer", ex);
+                return Task.FromException(ex);
             }
-
-            return Task.CompletedTask;
         }
     }
 }
