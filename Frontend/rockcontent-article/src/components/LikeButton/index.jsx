@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { LikeApi } from "../../api/index";
 
 const styles = {
   countSpanStyle: {
@@ -20,19 +21,19 @@ const LikeBtn = (props) => {
   var getArticleLikes = (articleId) => {
     setisLoading(true);
 
-    setTimeout(() => {
-      setLikesCount(Math.floor(Math.random() * (100 - 0) + 1));
+    LikeApi.get(`/Like/${articleId}`).then((c) => {
+      setLikesCount(c.data.likesCount);
       setisLoading(false);
-    }, 300);
+    });
   };
 
-  var doLike = (articleId) => {
+  var doLike = () => {
     setisLoading(true);
 
-    setTimeout(() => {
+    LikeApi.post("/Like", { articleId: props.articleId }).then(() => {
       setLikesCount(likesCount + 1);
       setisLoading(false);
-    }, 300);
+    });
   };
 
   useEffect(() => {

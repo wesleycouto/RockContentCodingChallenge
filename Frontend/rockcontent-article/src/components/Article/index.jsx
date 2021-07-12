@@ -19,7 +19,7 @@ const styles = {
   },
 };
 
-const article = (articleId) => {
+const article = (props) => {
   return (
     <>
       <article style={styles.articleStyle}>
@@ -30,7 +30,7 @@ const article = (articleId) => {
           Lorem Ipsum
         </section>
         <footer>
-          <LikeButton articleId={articleId} />
+          <LikeButton articleId={props.articleId} />
         </footer>
       </article>
     </>
