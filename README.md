@@ -3,6 +3,13 @@
 
 RockContentCodingChallenge is a Coding Challenge required by Rock Content.
 
+I Used React + Asp.NET Core for this challenge as the position describes React as a *nice to have*
+
+I choose to use RabbitMQ and Mongo as during our interview we talked about these technologies.
+
+I hope it meets the requirements.
+Thank you!
+
 ## Before you run
 
 I used docker to run RabbitMQ
@@ -11,6 +18,11 @@ I used docker to run RabbitMQ
 docker run -p 15672:15672 -p 5672:5672 masstransit/rabbitmq
 ```
 
+For react application
+```bash
+yarn
+yarn start
+```
 ## Used Technologies
 
 * Mass Transit - To abstract RabbitMQ and make it easier to use;
