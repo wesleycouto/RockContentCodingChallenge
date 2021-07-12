@@ -52,7 +52,7 @@ namespace RckCntnt.Api.Controllers
         {
             var likesCount = await _articleLikeService.GetArticleLikes(articleId);
 
-            return Ok(new { articleId, likesCount });
+            return Ok(new { likesCount });
         }
     }
 }

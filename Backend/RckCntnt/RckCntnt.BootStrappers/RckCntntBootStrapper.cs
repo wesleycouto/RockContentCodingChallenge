@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RckCntnt.Application.Services;
 using RckCntnt.Application.Services.Interfaces;
+using RckCntnt.Domain.Interfaces.Repository;
+using RckCntnt.Infra.Repository;
 
 namespace RckCntnt.BootStrappers
 {
@@ -11,6 +13,12 @@ namespace RckCntnt.BootStrappers
             #region Services
 
             services.AddScoped<IArticleLikeService, ArticleLikeService>();
+
+            #endregion Services
+
+            #region Services
+
+            services.AddScoped<IArticleRepository, ArticleRepository>();
 
             #endregion Services
         }

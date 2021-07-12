@@ -14,7 +14,9 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MONGODB_CONNECTION_STRING": "mongodb+srv://guest:guest@wesleycluster.juwro.mongodb.net/Rck?retryWrites=true&w=majority",
+        "MONGODB_DATABASE_NAME": "Rck"
       }
     },
     "RckCntnt.Api": {

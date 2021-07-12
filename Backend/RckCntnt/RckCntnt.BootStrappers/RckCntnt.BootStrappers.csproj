@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RckCntnt.Application\RckCntnt.Application.csproj" />
+    <ProjectReference Include="..\RckCntnt.Infra\RckCntnt.Infra.csproj" />
   </ItemGroup>
 
 </Project>
