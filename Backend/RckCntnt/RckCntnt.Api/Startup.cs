@@ -63,6 +63,13 @@ namespace RckCntnt.Api
 
             app.UseRouting();
 
+            app.UseCors(option =>
+            {
+                option.AllowAnyMethod();
+                option.AllowAnyHeader();
+                option.AllowAnyOrigin();
+            });
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

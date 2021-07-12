@@ -30,25 +30,25 @@ namespace RckCntnt.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] int articleId)
+        public async Task<IActionResult> Post([FromBody] ArticleLikeViewModel articleLike)
         {
             try
             {
-                await _bus.Publish(new ArticleLikeViewModel { ArticleId = articleId });
+                await _bus.Publish(articleLike);
 
-                _logger.LogInformation($"Like Received for Article: {articleId}");
+                _logger.LogInformation($"Like Received for Article: {articleLike.ArticleId}");
             }
             catch (System.Exception)
             {
-                _logger.LogError($"Error trying to send message: {articleId}");
+                _logger.LogError($"Error trying to send message: {articleLike.ArticleId}");
                 return StatusCode(500);
             }
 
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(int articleId)
+        [HttpGet("{articleId}")]
+        public async Task<IActionResult> Get([FromRoute] int articleId)
         {
             var likesCount = await _articleLikeService.GetArticleLikes(articleId);
 
