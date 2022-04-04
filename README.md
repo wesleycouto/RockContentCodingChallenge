@@ -5,7 +5,7 @@ RockContentCodingChallenge is a Coding Challenge required by Rock Content.
 
 I Used React + Asp.NET Core for this challenge as the position describes React as a *nice to have*
 
-I choose to use RabbitMQ and Mongo as during our interview we talked about these technologies.
+I decided to use RabbitMQ and Mongo as, during our interview we talked about these technologies.
 
 I hope it meets the requirements.
 Thank you!
